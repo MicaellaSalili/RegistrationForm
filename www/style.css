@@ -1,0 +1,261 @@
+@font-face {
+  font-family: 'Jano Sans Black';
+  src: url('fonts/Jano Sans Pro Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Jano Sans Black Italic';
+  src: url('fonts/Jano Sans Pro Black Italic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Jano Sans SemiBold Italic';
+  src: url('fonts/Jano Sans Pro SemiBold Italic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+.circle-top{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background-color: #2481bc;
+  clip-path: circle(60% at 0 0);
+  z-index: -1;
+}
+
+.ellipse-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1400px;
+  height: 100px;
+  background-color: #d45626;
+  clip-path: ellipse(43% 120% at 80% 7%);
+  z-index: -1;
+}
+
+.ellipse-bottom {
+  position: absolute;
+  top: 820px;
+  left: 0;
+  width: 1400px;
+  height: 100px;
+  background-color: #d45626;
+  clip-path: ellipse(43% 120% at 17% 99%);
+  z-index: -1;
+}
+
+.circle-bottom {
+  position: absolute;
+  top:720px;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  height: 200px;
+  background-color: #2481bc;
+  clip-path: circle(60% at 100% 100%);
+  z-index: -1;
+}
+
+body {
+    font-family: 'Jano Sans Black', sans-serif;
+    background-color: #e5d6d1;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 40px;
+  }
+  
+  #paymentpage.hidden{
+    justify-content: center;
+  }
+
+  .container {
+    background-color: #fff5e3;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color:#2481bc;
+    margin: 0px;
+    font-family: 'Jano Sans Black Italic', sans-serif;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  p{
+  font-family: 'Jano Sans Semibold Italic', sans-serif;
+  color: #d45626;
+  }
+
+  label {
+    margin-top: 12px;
+    font-family:'Jano Sans Semibold Italic', sans-serif;
+    font-weight: 600;
+    color: #d45626;
+  }
+  
+  input, select {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #2481bc;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2563eb;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #confirmation {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+    border-radius: 6px;
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 10px;
+    flex-direction: column;
+  }
+  .container {
+    max-width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: none;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  input, select, button {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+  .circle-top, .ellipse-top, .ellipse-bottom, .circle-bottom {
+    display: none;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  body {
+    padding: 20px;
+  }
+  .container {
+    max-width: 95%;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  input, select, button {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  .circle-top, .ellipse-top, .ellipse-bottom, .circle-bottom {
+    display: none;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  body {
+    padding: 30px;
+  }
+  .container {
+    max-width: 80%;
+    padding: 25px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  input, select, button {
+    font-size: 1.05rem;
+    padding: 11px;
+  }
+  .circle-top, .ellipse-top, .ellipse-bottom, .circle-bottom {
+    width: 200px;
+    height: 100px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  body {
+    padding: 40px;
+  }
+  .container {
+    max-width: 600px;
+    padding: 30px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  input, select, button {
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+  .circle-top, .ellipse-top, .ellipse-bottom, .circle-bottom {
+    width: 250px;
+    height: 150px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  body {
+    padding: 60px;
+  }
+  .container {
+    max-width: 700px;
+    padding: 40px;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  input, select, button {
+    font-size: 1.15rem;
+    padding: 14px;
+  }
+  .circle-top, .ellipse-top, .ellipse-bottom, .circle-bottom {
+    width: 300px;
+    height: 200px;
+  }
+}

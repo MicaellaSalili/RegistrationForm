@@ -1,50 +1,93 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
+<html lang="en"> 
     <head>
-        <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lunan Booking</title>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="icon" type="image/png" href="images/icon.png" />
     </head>
+
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
+      <div class="container">
+    
+        <!-- Booking Form Page -->
+        <div id="bookingPage">
+          <h1>Study Place Booking</h1>
+          <form id="bookingForm" form action="db.php" method="POST">
+            <!-- All your fields -->
+            <label for="firstName">First Name: <span style="color: red;">*</span></label>
+            <input type="text" id="firstName" required />
+    
+            <label for="lastName">Last Name: <span style="color: red;">*</span></label>
+            <input type="text" id="lastName" required />
+    
+            <label for="datetime">Date and Time: <span style="color: red;">*</span></label>
+            <input type="datetime-local" id="datetime" required />
+    
+            <label for="email">Email: <span style="color: red;">*</span></label>
+            <input type="email" id="email" required />
+    
+            <label for="phone">Phone Number: <span style="color: red;">*</span></label>
+            <input type="tel" id="phone" required pattern="[0-9]{10,15}" />
+  
+            <label for="hours">Number of Hours: <span style="color: red;">*</span></label>
+            <select id="hours" required>
+              <option value="">-- Select Option --</option>
+              <option value="1">1 Hour</option>
+              <option value="2">2 Hours</option>
+              <option value="3">3 Hours</option>
+              <option value="5">5 Hours</option>
+              <option value="8">8 Hours</option>
+            </select>
+    
+            <label for="notes">Notes:</label>
+            <textarea id="notes" rows="3" placeholder="Optional..."></textarea>
+    
+            <button type="submit">Proceed to Payment</button>
+          </form>
         </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
+    
+        <!-- Payment Page -->
+        <div id="paymentPage" class="hidden">
+          <h1>Select Payment Method</h1>
+          <form id="paymentForm" form action="db.php" method="POST">
+            <label for="method">Payment Method: <span style="color: red;">*</span></label>
+            <select id="method" required>
+              <option value="">-- Choose Method --</option>
+              <option value="gcash">GCash</option>
+              <option value="maya">Maya</option>
+              <option value="seabank">Seabank</option>
+              <option value="card">Credit/Debit Card</option>
+            </select>
+    
+            <div id="cardTypeContainer" class="hidden">
+              <label for="cardType">Card Type:</label>
+              <select id="cardType">
+                <option value="credit">Credit</option>
+                <option value="debit">Debit</option>
+              </select>
+            </div>
+    
+            <div id="paymentDetails"></div>
+    
+            <button type="submit">Submit Payment</button>
+          </form>
+        </div>
+    
+        <!-- Booking Ticket -->
+        <div id="ticket" class="hidden">
+          <h2>Booking Ticket</h2>
+          <p><strong>Name:</strong> <span id="ticketName"></span></p>
+          <p><strong>Date & Time:</strong> <span id="ticketDateTime"></span></p>
+          <p><strong>Status:</strong> <span id="ticketStatus">Pending</span></p>
+          <p><strong>Payment Method:</strong> <span id="ticketPaymentMethod"></span></p>
+        </div>        
+
+        <div id="confirmation" class="hidden"></div>
+      </div>
+    
+      <script src="script.js"></script>
     </body>
 </html>
+
